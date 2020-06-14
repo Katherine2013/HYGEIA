@@ -26,15 +26,15 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="e7262966-825f-410e-a960-4e2ba2bf102a">
-      <console name="HygeiaDB" type="STANDARD" schema="mysql" session="Main" />
+    <connection id="294a8391-1a7a-47f8-a14e-569d266d398c">
+      <console name="HygeiaDB" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="e7262966-825f-410e-a960-4e2ba2bf102a" />
+    <connection id="294a8391-1a7a-47f8-a14e-569d266d398c" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -59,7 +59,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="e7262966-825f-410e-a960-4e2ba2bf102a" active="true">
+      <connection id="294a8391-1a7a-47f8-a14e-569d266d398c" active="true">
         <database>
           <name value="HygeiaDB" />
           <description value="" />
