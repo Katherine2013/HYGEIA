@@ -25,7 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hygeia.R;
-import com.example.hygeia.TestMapActivity;
 import com.example.hygeia.ui.login.LoginViewModel;
 import com.example.hygeia.ui.login.LoginViewModelFactory;
 
@@ -141,7 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
 
                 //页面跳转
-                Intent i = new Intent(LoginActivity.this , TestMapActivity.class);
+                Intent i = new Intent(LoginActivity.this , TaskList.class);
                 //启动
                 startActivity(i);
                 System.out.println("Successfully logged in !");
