@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "HYGEIA-v1"
+rootProject.name = "HYGEIA"
