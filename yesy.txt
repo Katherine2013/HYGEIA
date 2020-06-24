@@ -1,8 +1,0 @@
-git pull
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
-git checkout zyd
-git add .
-git commit -m "create a txt"
-git push
->>>>>>>>>>>
