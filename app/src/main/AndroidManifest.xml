@@ -15,6 +15,15 @@
     <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+<!--    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>-->
+<!--    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>-->
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -43,6 +52,8 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="bb16c7ce88114544e116cee6b01fb49d" />
+
+        <service android:name="com.amap.api.location.APSService"/>
     </application>
 
 </manifest>

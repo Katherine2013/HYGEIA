@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(MainActivity.this , MapPoiSearch.class);
+                Intent i = new Intent(MainActivity.this , TestMapActivity.class);
                 startActivity(i);
             }
         });

@@ -75,6 +75,7 @@ public class MapPoiSearch extends FragmentActivity implements
      */
     private void init() {
         if (mAMap == null) {
+
             MapView mapView = (MapView) findViewById(R.id.map_poi);
             mAMap = mapView.getMap();
 
@@ -193,6 +194,7 @@ public class MapPoiSearch extends FragmentActivity implements
                         mAMap.clear();// 清理之前的图标
                         PoiOverlay poiOverlay = new PoiOverlay(mAMap, poiItems);
                         poiOverlay.removeFromMap();
+                        // 添加marker到地图中
                         poiOverlay.addToMap();
                         poiOverlay.zoomToSpan();
                     } else if (suggestionCities != null
