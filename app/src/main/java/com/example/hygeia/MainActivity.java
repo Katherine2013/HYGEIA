@@ -30,11 +30,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // TODO: Testing Map by this button
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent i = new Intent(MainActivity.this , TestMapActivity.class);
+                Intent i = new Intent(MainActivity.this , MapPoiSearch.class);
                 startActivity(i);
             }
         });

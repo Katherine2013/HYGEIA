@@ -17,5 +17,8 @@ public class TestMapActivity extends AppCompatActivity {
         MapView mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);// 此方法必须重写
         AMap aMap = mapView.getMap();
+
+
+
     }
 }
