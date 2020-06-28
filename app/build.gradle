@@ -38,6 +38,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation files('libs\\mysql-connector-java-5.1.49-bin.jar')
     implementation files('libs\\Android_Map3D_SDK_V7.5.0_20200610.jar')
+    implementation files('libs\\AMap_Location_V5.0.0_20200609.jar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
