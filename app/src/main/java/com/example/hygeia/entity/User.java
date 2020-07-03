@@ -8,6 +8,7 @@ public class User {
     private String name;
     private String email;
     private String password;
+    private int usercredit;
 
     // 用户的历史任务列表
     protected List<Task> taskList;
@@ -41,6 +42,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserCredit() {
+        return usercredit;
+    }
+
+    public void setUsercreditC(int credit) {
+        this.usercredit = usercredit;
     }
 
     @Override
