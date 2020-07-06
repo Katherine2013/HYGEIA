@@ -5,11 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMap.InfoWindowAdapter;
@@ -54,6 +56,9 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 	private WalkRouteResult mWalkRouteResult;
 	private LatLonPoint mStartPoint = new LatLonPoint(39.976014, 116.317799);//起点，39.942295 116.335891
 	private LatLonPoint mEndPoint = new LatLonPoint(39.983456, 116.3154950);//终点，39.995576 116.481288
+	private LatLonPoint mStartPoint_m ;//起点，39.942295 116.335891
+	private LatLonPoint mEndPoint_m;//终点，39.995576 116.481288
+
 	private final int ROUTE_TYPE_WALK = 3;
 	
 	private RelativeLayout mBottomLayout, mHeadLayout;
@@ -74,32 +79,75 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 	}
 	private void getLine(){
 		//TODO:get file
-		File file = new File("./data.txt");
-
+		String filePath = null;
+		String fileName = "data.txt";
+		boolean hasSDCard = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+		if (hasSDCard) {
+			filePath = Environment.getExternalStorageDirectory().toString() + File.separator + fileName;
+			Log.e("TestFile", "有SD！！！！");
+		} else {
+			filePath = Environment.getDownloadCacheDirectory().toString() + File.separator + fileName;
+			Log.e("TestFile", "没有SD！！！！");
+		}
+		File file = new File(filePath);
+		String filecon = getFileContent(file);
+		Toast.makeText(WalkRouteActivity.this,filecon,Toast.LENGTH_SHORT).show();;
+//		if (!file.isDirectory()) {  //检查此路径名的文件是否是一个目录(文件夹)
+//			if (file.getName().endsWith("txt")) {//文件格式为""文件
+//				try {
+//					System.out.println("--------------------格式为txt----------------------------------：??????????????????????????????");
+//					//InputStream instream = getAssets().open("data.txt");
+//					InputStream instream = new FileInputStream(file);
+//					System.out.println("--------------------格式为txt：??????????????????????????????");
+//					if (instream != null) {
+//						System.out.println("--------------------文件读取：??????????????????????????????");
+//						InputStreamReader inputreader
+//								= new InputStreamReader(instream, "UTF-8");
+//						BufferedReader buffreader = new BufferedReader(inputreader); //输入流
+//						String line = "";
+//						line = buffreader.readLine();
+//						String[] arr = line.split(",");
+//						mStartPoint = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
+//						line = buffreader.readLine();
+//						arr = line.split(",");
+//						mEndPoint = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
+//						System.out.println("--------------------文件读取："+arr[0]+arr[1]);
+//						//分行读取
+////						while ((line = buffreader.readLine()) != null) {
+////							content += line + "\n";
+////						}
+//						instream.close();//关闭输入流
+//					}
+//				} catch (java.io.FileNotFoundException e) {
+//					Log.d("TestFile", "The File doesn't not exist.");
+//				} catch (IOException e) {
+//					Log.d("TestFile", e.getMessage());
+//				}
+//			}
+//		}
+	}
+	private String getFileContent(File file) {
+		String content = "";
 		if (!file.isDirectory()) {  //检查此路径名的文件是否是一个目录(文件夹)
 			if (file.getName().endsWith("txt")) {//文件格式为""文件
 				try {
-					System.out.println("--------------------格式为txt----------------------------------：??????????????????????????????");
-					//InputStream instream = getAssets().open("data.txt");
 					InputStream instream = new FileInputStream(file);
-					System.out.println("--------------------格式为txt：??????????????????????????????");
 					if (instream != null) {
-						System.out.println("--------------------文件读取：??????????????????????????????");
 						InputStreamReader inputreader
 								= new InputStreamReader(instream, "UTF-8");
-						BufferedReader buffreader = new BufferedReader(inputreader); //输入流
+						BufferedReader buffreader = new BufferedReader(inputreader);
 						String line = "";
-						line = buffreader.readLine();
-						String[] arr = line.split(",");
-						mStartPoint = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
-						line = buffreader.readLine();
-						arr = line.split(",");
-						mEndPoint = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
-						System.out.println("--------------------文件读取："+arr[0]+arr[1]);
 						//分行读取
-//						while ((line = buffreader.readLine()) != null) {
-//							content += line + "\n";
-//						}
+						int tot =0;
+						while ((line = buffreader.readLine()) != null) {
+							content += line + "\n";
+							setlocation(line);
+							tot++;
+							if(tot==2){
+								break;
+							}
+							Log.e("read------", line+'\n');
+						}
 						instream.close();//关闭输入流
 					}
 				} catch (java.io.FileNotFoundException e) {
@@ -109,13 +157,22 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 				}
 			}
 		}
+		return content;
 	}
+
+	private void setlocation(String line) {
+		String[] arr = line.split(" ");
+		mStartPoint_m = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
+		arr = line.split(" ");
+		mEndPoint_m = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
+	}
+
 	private void setfromandtoMarker() {
 		aMap.addMarker(new MarkerOptions()
-		.position(AMapUtil.convertToLatLng(mStartPoint))
+		.position(AMapUtil.convertToLatLng(mStartPoint_m))
 		.icon(BitmapDescriptorFactory.fromResource(R.drawable.start)));
 		aMap.addMarker(new MarkerOptions()
-		.position(AMapUtil.convertToLatLng(mEndPoint))
+		.position(AMapUtil.convertToLatLng(mEndPoint_m))
 		.icon(BitmapDescriptorFactory.fromResource(R.drawable.end)));
 	}
 
@@ -184,16 +241,16 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 	 * 开始搜索路径规划方案
 	 */
 	public void searchRouteResult(int routeType, int mode) {
-		if (mStartPoint == null) {
+		if (mStartPoint_m == null) {
 			ToastUtil.show(mContext, "定位中，稍后再试...");
 			return;
 		}
-		if (mEndPoint == null) {
+		if (mEndPoint_m == null) {
 			ToastUtil.show(mContext, "终点未设置");
 		}
 		showProgressDialog();
 		final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
-				mStartPoint, mEndPoint);
+				mStartPoint_m, mEndPoint_m);
 		if (routeType == ROUTE_TYPE_WALK) {// 步行路径规划
 			WalkRouteQuery query = new WalkRouteQuery(fromAndTo, mode);
 			mRouteSearch.calculateWalkRouteAsyn(query);// 异步路径规划步行模式查询

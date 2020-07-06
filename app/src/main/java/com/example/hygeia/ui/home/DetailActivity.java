@@ -72,6 +72,7 @@ public class DetailActivity extends Activity {
             }
         });
         mBtnLocation=findViewById(R.id.btn_location);
+        //跳转到设置位置界面
         mBtnLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
