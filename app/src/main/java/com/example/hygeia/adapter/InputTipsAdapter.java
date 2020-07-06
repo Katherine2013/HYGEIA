@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * 输入提示adapter，展示item名称和地址
- * Created by ligen on 16/11/25.
  */
 public class InputTipsAdapter extends BaseAdapter {
     private Context mContext;

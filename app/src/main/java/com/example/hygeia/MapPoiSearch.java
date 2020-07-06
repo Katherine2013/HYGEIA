@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,7 +59,7 @@ public class MapPoiSearch extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map_poi_search);
+        setContentView(R.layout.activity_test_map);
 
 //        MapView mapView = (MapView) findViewById(R.id.map);
 //        mapView.onCreate(savedInstanceState);// 此方法必须重写
@@ -76,7 +77,7 @@ public class MapPoiSearch extends FragmentActivity implements
     private void init() {
         if (mAMap == null) {
 
-            MapView mapView = (MapView) findViewById(R.id.map_poi);
+            MapView mapView = (MapView) findViewById(R.id.map);
             mAMap = mapView.getMap();
 
 //            mAMap = ((SupportMapFragment) this.getSupportFragmentManager()
@@ -125,7 +126,7 @@ public class MapPoiSearch extends FragmentActivity implements
     protected void doSearchQuery(String keywords) {
         showProgressDialog();// 显示进度框
         currentPage = 1;
-        // 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
+        // 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（默认北京，空字符串代表全国）
         query = new PoiSearch.Query(keywords, "", Constants.DEFAULT_CITY);
         // 设置每页最多返回多少条poiitem
         query.setPageSize(10);
@@ -185,6 +186,9 @@ public class MapPoiSearch extends FragmentActivity implements
             if (result != null && result.getQuery() != null) {// 搜索poi的结果
                 if (result.getQuery().equals(query)) {// 是否是同一条
                     poiResult = result;
+
+
+
                     // 取得搜索到的poiitems有多少页
                     List<PoiItem> poiItems = poiResult.getPois();// 取得第一页的poiitem数据，页数从数字0开始
                     List<SuggestionCity> suggestionCities = poiResult
@@ -249,6 +253,7 @@ public class MapPoiSearch extends FragmentActivity implements
             mAMap.clear();
             String keywords = data.getStringExtra(Constants.KEY_WORDS_NAME);
             if(keywords != null && !keywords.equals("")){
+
                 doSearchQuery(keywords);
             }
             mKeywordsTextView.setText(keywords);

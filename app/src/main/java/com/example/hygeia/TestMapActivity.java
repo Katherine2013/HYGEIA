@@ -18,6 +18,8 @@ import com.amap.api.maps.model.MyLocationStyle;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.example.hygeia.MapPoiSearch;
+
 //public class TestMapActivity extends AppCompatActivity {
 //
 //    @Override
@@ -94,6 +96,9 @@ public class TestMapActivity extends Activity {
 
         mapView = (MapView) findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);//必须要写
+
+        MapPoiSearch mapPoiSearch = new MapPoiSearch();
+        mapPoiSearch.onCreate(savedInstanceState);
 
         //初始化定位
         mLocationClient = new AMapLocationClient(getApplicationContext());
