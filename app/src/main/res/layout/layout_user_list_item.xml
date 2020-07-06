@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="5dp"
+    android:gravity="center_vertical"
+    android:padding="5dp"
+    android:descendantFocusability="blocksDescendants">
+
+    <!-- 用上面代码抢回焦点 -->
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/icon_dog"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/title"
+            android:text="天天静听"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="2dp"/>
+        <TextView
+            android:id="@+id/version"
+            android:text="版本: 8.4.0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#999"
+            android:layout_marginTop="6dp"/>
+        <TextView
+            android:id="@+id/size"
+            android:text="大小: 32.81M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#999"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn"
+        android:text="detail"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:layout_width="66dp"
+        android:layout_height="30dp"
+        android:background="@drawable/bg_btn1"
+        android:layout_marginRight="5dp"/>
+
+
+
+
+</LinearLayout>
