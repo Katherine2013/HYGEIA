@@ -27,4 +27,6 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="no_result">Sorry can not find related content in search</string>
 </resources>
