@@ -2,6 +2,7 @@ package com.example.hygeia.ui.home;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +13,7 @@ import com.example.hygeia.R;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.RandomAccessFile;
+
 
 public class GetLocationActivity extends AppCompatActivity {
 
@@ -71,5 +73,6 @@ public class GetLocationActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("TestFile", "Error on write File:" + e);
         }
+
     }
 }

@@ -8,8 +8,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.amap.api.services.poisearch.PoiSearch;
+import com.example.hygeia.MainActivity;
+import com.example.hygeia.MapPoiSearch;
 import com.example.hygeia.R;
-import com.example.hygeia.ui.maproute.WalkRouteActivity;
 
 //任务详情
 public class DetailActivity extends Activity {
@@ -55,30 +57,31 @@ public class DetailActivity extends Activity {
         TextView tv_place = (TextView) findViewById(R.id.tv_place);
         tv_place.setText("Task's loaction: "+place);
 
-        mBtnMap=findViewById(R.id.btn_map);
-        //跳转到路径界面
+        mBtnMap = findViewById(R.id.btn_map);
         mBtnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DetailActivity.this, WalkRouteActivity.class);
+                Intent intent=new Intent(DetailActivity.this,MapActivity.class);
                 startActivity(intent);
             }
         });
-        mBtnGet=findViewById(R.id.btn_get);
+
+        mBtnGet = findViewById(R.id.btn_get);
         mBtnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(DetailActivity.this,"successful！",Toast.LENGTH_SHORT).show();
             }
         });
-        mBtnLocation=findViewById(R.id.btn_location);
-        //跳转到设置位置界面
-        mBtnLocation.setOnClickListener(new View.OnClickListener() {
+
+        mBtnLocation = findViewById(R.id.btn_location);
+        mBtnLocation.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DetailActivity.this,GetLocationActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(DetailActivity.this, MapPoiSearch.class);
+                startActivity(i);
             }
         });
     }
 }
+
