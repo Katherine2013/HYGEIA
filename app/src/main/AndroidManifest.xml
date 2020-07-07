@@ -9,6 +9,11 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!--手机存储-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+
     <!--用于访问GPS定位-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!--用于申请调用A-GPS模块-->
@@ -35,8 +40,8 @@
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".TestMapActivity" />
-
         <activity android:name=".MapPoiSearch" />
+
 
         <activity android:name=".ui.home.GetLocationActivity" />
         <activity android:name=".ui.home.MapActivity" />
@@ -54,14 +59,17 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.maproute.WalkRouteDetailActivity"></activity>
+        <activity android:name=".ui.maproute.WalkRouteActivity"></activity>
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="e5b218a591494e29f9bf7d32562d3553" />
+
         <activity
             android:name=".InputTipsActivity"
             android:screenOrientation="portrait">
         </activity>
 
-        <meta-data
-            android:name="com.amap.api.v2.apikey"
-            android:value="bb16c7ce88114544e116cee6b01fb49d" />
 
         <service android:name="com.amap.api.location.APSService"/>
     </application>
