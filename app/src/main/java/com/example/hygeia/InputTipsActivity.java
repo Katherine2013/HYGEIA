@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.amap.api.services.help.Inputtips;
 import com.amap.api.services.help.InputtipsQuery;
@@ -83,6 +84,11 @@ public class InputTipsActivity extends Activity implements SearchView.OnQueryTex
             Intent intent = new Intent();
             intent.putExtra(Constants.EXTRA_TIP, tip);
             setResult(MapPoiSearch.RESULT_CODE_INPUTTIPS, intent);
+
+            // TODO 在这里设置搜索结果
+            TextView tv_place = (TextView) findViewById(R.id.tv_place);
+            tv_place.setText(MapPoiSearch.RESULT_CODE_INPUTTIPS);
+
             this.finish();
         }
     }

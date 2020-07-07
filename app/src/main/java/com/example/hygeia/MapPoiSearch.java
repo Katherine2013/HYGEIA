@@ -31,6 +31,8 @@ import com.example.hygeia.poiutil.Constants;
 import com.example.hygeia.poiutil.ToastUtil;
 
 import com.amap.api.maps.SupportMapFragment;
+import com.example.hygeia.ui.home.DetailActivity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -44,7 +46,7 @@ public class MapPoiSearch extends FragmentActivity implements
     private String mKeyWords = "";// 要输入的poi搜索关键字
     private ProgressDialog progDialog = null;// 搜索时进度条
 
-    private PoiResult poiResult; // poi返回的结果
+    protected PoiResult poiResult; // poi返回的结果
     private int currentPage = 1;
     private PoiSearch.Query query;// Poi查询条件类
     private PoiSearch poiSearch;// POI搜索
@@ -59,11 +61,7 @@ public class MapPoiSearch extends FragmentActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_map);
-
-//        MapView mapView = (MapView) findViewById(R.id.map);
-//        mapView.onCreate(savedInstanceState);// 此方法必须重写
-//        AMap aMap = mapView.getMap();
+        setContentView(R.layout.activity_map_poi_search);
 
         mCleanKeyWords = (ImageView)findViewById(R.id.clean_keywords);
         mCleanKeyWords.setOnClickListener(this);
@@ -75,9 +73,10 @@ public class MapPoiSearch extends FragmentActivity implements
      * 初始化AMap对象
      */
     private void init() {
+
         if (mAMap == null) {
 
-            MapView mapView = (MapView) findViewById(R.id.map);
+            MapView mapView = (MapView) findViewById(R.id.map_poi);
             mAMap = mapView.getMap();
 
 //            mAMap = ((SupportMapFragment) this.getSupportFragmentManager()
@@ -188,7 +187,6 @@ public class MapPoiSearch extends FragmentActivity implements
                     poiResult = result;
 
 
-
                     // 取得搜索到的poiitems有多少页
                     List<PoiItem> poiItems = poiResult.getPois();// 取得第一页的poiitem数据，页数从数字0开始
                     List<SuggestionCity> suggestionCities = poiResult
@@ -245,6 +243,7 @@ public class MapPoiSearch extends FragmentActivity implements
             } else {
                 addTipMarker(tip);
             }
+
             mKeywordsTextView.setText(tip.getName());
             if(!tip.getName().equals("")){
                 mCleanKeyWords.setVisibility(View.VISIBLE);
