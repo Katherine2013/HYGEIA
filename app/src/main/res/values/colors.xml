@@ -45,10 +45,7 @@
     <drawable name="transparent">#00000000</drawable>
     <color name="transparent">#00000000</color>
 
-    <color name="grey"> #ebebeb</color>
     <color name="black"> #000000</color>
-    <color name="darkgrey"> #C0C0C0</color>
-    <color name="white"> #FFFFFF</color>
     <color name="red"> #FF0000</color>
     <color name="f850_default_blue">#0079ff</color>
 </resources>

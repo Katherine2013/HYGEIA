@@ -87,7 +87,7 @@ public class InputTipsActivity extends Activity implements SearchView.OnQueryTex
 
             // TODO 在这里设置搜索结果
             TextView tv_place = (TextView) findViewById(R.id.tv_place);
-            tv_place.setText(MapPoiSearch.RESULT_CODE_INPUTTIPS);
+//            tv_place.setText(MapPoiSearch.RESULT_CODE_INPUTTIPS);
 
             this.finish();
         }

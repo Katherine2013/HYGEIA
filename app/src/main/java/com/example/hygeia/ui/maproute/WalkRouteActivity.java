@@ -141,10 +141,15 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 						int tot =0;
 						while ((line = buffreader.readLine()) != null) {
 							content += line + "\n";
-							setlocation(line);
 							tot++;
-							if(tot==2){
-								break;
+							if(tot==1){
+								setlocation_start(line);
+							}else{
+								if (tot == 2){
+									setlocation_end(line);
+								}else{
+									break;
+								}
 							}
 							Log.e("read------", line+'\n');
 						}
@@ -160,13 +165,14 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 		return content;
 	}
 
-	private void setlocation(String line) {
+	private void setlocation_start(String line) {
 		String[] arr = line.split(" ");
 		mStartPoint_m = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
-		arr = line.split(" ");
+	}
+	private void setlocation_end(String line) {
+		String[] arr = line.split(" ");
 		mEndPoint_m = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
 	}
-
 	private void setfromandtoMarker() {
 		aMap.addMarker(new MarkerOptions()
 		.position(AMapUtil.convertToLatLng(mStartPoint_m))

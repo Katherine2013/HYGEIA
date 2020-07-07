@@ -12,6 +12,7 @@ import com.amap.api.services.poisearch.PoiSearch;
 import com.example.hygeia.MainActivity;
 import com.example.hygeia.MapPoiSearch;
 import com.example.hygeia.R;
+import com.example.hygeia.ui.maproute.WalkRouteActivity;
 
 //任务详情
 public class DetailActivity extends Activity {
@@ -61,7 +62,7 @@ public class DetailActivity extends Activity {
         mBtnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(DetailActivity.this,MapActivity.class);
+                Intent intent=new Intent(DetailActivity.this, WalkRouteActivity.class);
                 startActivity(intent);
             }
         });
