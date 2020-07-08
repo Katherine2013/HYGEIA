@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PublishTask">
+
+
+    <include layout="@layout/layout_titlebar" />
+
+    <TextView
+        android:id="@+id/tv_taskname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK NAME:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_tastname"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_taskname" />
+
+
+    <TextView
+        android:id="@+id/tv_tasklocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK LOCATION:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_tasklocation"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_tasklocation" />
+
+    <TextView
+        android:id="@+id/tv_taskreward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK REWARD:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_taskereward"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_taskreward" />
+
+    <TextView
+        android:id="@+id/tv_tasktime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK TIME:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_tasktime"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="400dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_tasktime" />
+
+    <TextView
+        android:id="@+id/tv_taskpriority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK PRIORITY:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_taskpriority"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="350dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_taskpriority" />
+
+
+    <TextView
+        android:id="@+id/tv_tasklabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK LABEL:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_tasklabel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_tasklabel" />
+
+
+    <TextView
+        android:id="@+id/tv_taskdetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TASK DETAIL:"
+        android:textSize="20sp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/et_taskdetail"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginStart="10dp"
+        android:autofillHints="@string/prompt_password"
+        android:imeActionLabel="@string/action_sign_in_short"
+        android:imeOptions="actionDone"
+        android:selectAllOnFocus="true"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_taskdetail" />
+
+    <Button
+        android:id="@+id/btn_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="150dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:background="@drawable/bg_btn2"
+        android:text="ADD PICTURES"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

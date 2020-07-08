@@ -30,10 +30,9 @@
         android:id="@+id/pleaseloginbtn"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
-
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:onClick="pleaselogin"
-        android:text="@string/logintext" />
+        android:text="click to log in" />
 
     <TextView
         android:id="@+id/textView"
