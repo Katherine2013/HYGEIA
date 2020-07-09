@@ -22,7 +22,7 @@ public class WalkRouteDetailActivity extends Activity {
 		setContentView(R.layout.activity_route_detail);
 		getIntentData();
 		mTitle = (TextView) findViewById(R.id.title_center);
-		mTitle.setText("步行路线详情");
+		mTitle.setText("Walking route details");
 		mTitleWalkRoute = (TextView) findViewById(R.id.firstline);
 		String dur = AMapUtil.getFriendlyTime((int) mWalkPath.getDuration());
 		String dis = AMapUtil

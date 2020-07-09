@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:text="详情"
+                android:text="Detail"
                 android:textColor="@color/blue"
                 android:textSize="14sp" />
 

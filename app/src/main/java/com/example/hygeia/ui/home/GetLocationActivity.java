@@ -45,11 +45,6 @@ public class GetLocationActivity extends AppCompatActivity {
                 dir.mkdirs();
                 file.createNewFile();
             }
-//            FileOutputStream outStream = new FileOutputStream(file);
-//            outStream.write("Wx:lcti1314");
-//            outStream.w
-//            outStream.close();
-//            outStream.flush();
         } catch (Exception e) {
             e.printStackTrace();
         }

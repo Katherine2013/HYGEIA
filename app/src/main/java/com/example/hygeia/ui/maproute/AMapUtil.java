@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.example.hygeia.ui.maproute;
 
@@ -129,145 +129,145 @@ public class AMapUtil {
 
 	public static final String HtmlBlack = "#000000";
 	public static final String HtmlGray = "#808080";
-	
+
 	public static String getFriendlyTime(int second) {
 		if (second > 3600) {
 			int hour = second / 3600;
 			int miniate = (second % 3600) / 60;
-			return hour + "小时" + miniate + "分钟";
+			return hour + "h" + miniate + "min";
 		}
 		if (second >= 60) {
 			int miniate = second / 60;
-			return miniate + "分钟";
+			return miniate + "min";
 		}
-		return second + "秒";
+		return second + "s";
 	}
-	
+
 	//路径规划方向指示和图片对应
-		public static int getDriveActionID(String actionName) {
-			if (actionName == null || actionName.equals("")) {
-				return R.drawable.dir1;
-			}
-			if ("左转".equals(actionName)) {
-				return R.drawable.dir2;
-			}
-			if ("右转".equals(actionName)) {
-				return R.drawable.dir1;
-			}
-			if ("向左前方行驶".equals(actionName) || "靠左".equals(actionName)) {
-				return R.drawable.dir6;
-			}
-			if ("向右前方行驶".equals(actionName) || "靠右".equals(actionName)) {
-				return R.drawable.dir5;
-			}
-			if ("向左后方行驶".equals(actionName) || "左转调头".equals(actionName)) {
-				return R.drawable.dir7;
-			}
-			if ("向右后方行驶".equals(actionName)) {
-				return R.drawable.dir8;
-			}
-			if ("直行".equals(actionName)) {
-				return R.drawable.dir3;
-			}
-			if ("减速行驶".equals(actionName)) {
-				return R.drawable.dir4;
-			}
+	public static int getDriveActionID(String actionName) {
+		if (actionName == null || actionName.equals("")) {
+			return R.drawable.dir1;
+		}
+		if ("Turn left".equals(actionName)) {
+			return R.drawable.dir2;
+		}
+		if ("Turn right".equals(actionName)) {
+			return R.drawable.dir1;
+		}
+		if ("Ahead to the left".equals(actionName) || "On the left".equals(actionName)) {
+			return R.drawable.dir6;
+		}
+		if ("Ahead to the right".equals(actionName) || "On the rigth".equals(actionName)) {
+			return R.drawable.dir5;
+		}
+		if ("Walk to the left rear".equals(actionName) || "A left turn".equals(actionName)) {
+			return R.drawable.dir7;
+		}
+		if ("Walk to the right rear".equals(actionName)) {
+			return R.drawable.dir8;
+		}
+		if ("Go straight".equals(actionName)) {
 			return R.drawable.dir3;
 		}
-		
-		public static int getWalkActionID(String actionName) {
-			if (actionName == null || actionName.equals("")) {
-				return R.drawable.dir13;
-			}
-			if ("左转".equals(actionName)) {
-				return R.drawable.dir2;
-			}
-			if ("右转".equals(actionName)) {
-				return R.drawable.dir1;
-			}
-			if ("向左前方".equals(actionName) || "靠左".equals(actionName) || actionName.contains("向左前方")) {
-				return R.drawable.dir6;
-			}
-			if ("向右前方".equals(actionName) || "靠右".equals(actionName) || actionName.contains("向右前方")) {
-				return R.drawable.dir5;
-			}
-			if ("向左后方".equals(actionName)|| actionName.contains("向左后方")) {
-				return R.drawable.dir7;
-			}
-			if ("向右后方".equals(actionName)|| actionName.contains("向右后方")) {
-				return R.drawable.dir8;
-			}
-			if ("直行".equals(actionName)) {
-				return R.drawable.dir3;
-			}
-			if ("通过人行横道".equals(actionName)) {
-				return R.drawable.dir9;
-			}
-			if ("通过过街天桥".equals(actionName)) {
-				return R.drawable.dir11;
-			}
-			if ("通过地下通道".equals(actionName)) {
-				return R.drawable.dir10;
-			}
+		if ("Slow walk".equals(actionName)) {
+			return R.drawable.dir4;
+		}
+		return R.drawable.dir3;
+	}
 
+	public static int getWalkActionID(String actionName) {
+		if (actionName == null || actionName.equals("")) {
 			return R.drawable.dir13;
 		}
-		
-		public static String getBusPathTitle(BusPath busPath) {
-			if (busPath == null) {
-				return String.valueOf("");
-			}
-			List<BusStep> busSetps = busPath.getSteps();
-			if (busSetps == null) {
-				return String.valueOf("");
-			}
-			StringBuffer sb = new StringBuffer();
-			for (BusStep busStep : busSetps) {
-				 StringBuffer title = new StringBuffer();
-			   if (busStep.getBusLines().size() > 0) {
-				   for (RouteBusLineItem busline : busStep.getBusLines()) {
-					   if (busline == null) {
-							continue;
-						}
-					  
-					   String buslineName = getSimpleBusLineName(busline.getBusLineName());
-					   title.append(buslineName);
-					   title.append(" / ");
-				}
-//					RouteBusLineItem busline = busStep.getBusLines().get(0);
-				   
-					sb.append(title.substring(0, title.length() - 3));
-					sb.append(" > ");
-				}
-				if (busStep.getRailway() != null) {
-					RouteRailwayItem railway = busStep.getRailway();
-					sb.append(railway.getTrip()+"("+railway.getDeparturestop().getName()
-							+" - "+railway.getArrivalstop().getName()+")");
-					sb.append(" > ");
-				}
-			}
-			return sb.substring(0, sb.length() - 3);
+		if ("Turn left".equals(actionName)) {
+			return R.drawable.dir2;
+		}
+		if ("Turn right".equals(actionName)) {
+			return R.drawable.dir1;
+		}
+		if ("Ahead to the left".equals(actionName) || "On the left".equals(actionName) || actionName.contains("Ahead to the left")) {
+			return R.drawable.dir6;
+		}
+		if ("Ahead to the right".equals(actionName) || "On the right".equals(actionName) || actionName.contains("Ahead to the right")) {
+			return R.drawable.dir5;
+		}
+		if ("Walk to the left rear".equals(actionName)|| actionName.contains("To the left rear")) {
+			return R.drawable.dir7;
+		}
+		if ("Walk to the right rear".equals(actionName)|| actionName.contains("To the right rear")) {
+			return R.drawable.dir8;
+		}
+		if ("Go straight".equals(actionName)) {
+			return R.drawable.dir3;
+		}
+		if ("Go through the crosswalk".equals(actionName)) {
+			return R.drawable.dir9;
+		}
+		if ("Through the overpass".equals(actionName)) {
+			return R.drawable.dir11;
+		}
+		if ("Through the underpass".equals(actionName)) {
+			return R.drawable.dir10;
 		}
 
-		public static String getBusPathDes(BusPath busPath) {
-			if (busPath == null) {
-				return String.valueOf("");
-			}
-			long second = busPath.getDuration();
-			String time = getFriendlyTime((int) second);
-			float subDistance = busPath.getDistance();
-			String subDis = getFriendlyLength((int) subDistance);
-			float walkDistance = busPath.getWalkDistance();
-			String walkDis = getFriendlyLength((int) walkDistance);
-			return String.valueOf(time + " | " + subDis + " | 步行" + walkDis);
+		return R.drawable.dir13;
+	}
+
+	public static String getBusPathTitle(BusPath busPath) {
+		if (busPath == null) {
+			return String.valueOf("");
 		}
-		
-		public static String getSimpleBusLineName(String busLineName) {
-			if (busLineName == null) {
-				return String.valueOf("");
-			}
-			return busLineName.replaceAll("\\(.*?\\)", "");
+		List<BusStep> busSetps = busPath.getSteps();
+		if (busSetps == null) {
+			return String.valueOf("");
 		}
+		StringBuffer sb = new StringBuffer();
+		for (BusStep busStep : busSetps) {
+			StringBuffer title = new StringBuffer();
+			if (busStep.getBusLines().size() > 0) {
+				for (RouteBusLineItem busline : busStep.getBusLines()) {
+					if (busline == null) {
+						continue;
+					}
+
+					String buslineName = getSimpleBusLineName(busline.getBusLineName());
+					title.append(buslineName);
+					title.append(" / ");
+				}
+//					RouteBusLineItem busline = busStep.getBusLines().get(0);
+
+				sb.append(title.substring(0, title.length() - 3));
+				sb.append(" > ");
+			}
+			if (busStep.getRailway() != null) {
+				RouteRailwayItem railway = busStep.getRailway();
+				sb.append(railway.getTrip()+"("+railway.getDeparturestop().getName()
+						+" - "+railway.getArrivalstop().getName()+")");
+				sb.append(" > ");
+			}
+		}
+		return sb.substring(0, sb.length() - 3);
+	}
+
+	public static String getBusPathDes(BusPath busPath) {
+		if (busPath == null) {
+			return String.valueOf("");
+		}
+		long second = busPath.getDuration();
+		String time = getFriendlyTime((int) second);
+		float subDistance = busPath.getDistance();
+		String subDis = getFriendlyLength((int) subDistance);
+		float walkDistance = busPath.getWalkDistance();
+		String walkDis = getFriendlyLength((int) walkDistance);
+		return String.valueOf(time + " | " + subDis + " | walk" + walkDis);
+	}
+
+	public static String getSimpleBusLineName(String busLineName) {
+		if (busLineName == null) {
+			return String.valueOf("");
+		}
+		return busLineName.replaceAll("\\(.*?\\)", "");
+	}
 
 
 }

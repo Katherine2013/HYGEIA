@@ -3,6 +3,8 @@ package com.example.hygeia;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.widget.SearchView;
 //import android.support.v7.widget.SearchView;
 import android.view.View;
@@ -11,7 +13,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.help.Inputtips;
 import com.amap.api.services.help.InputtipsQuery;
 import com.amap.api.services.help.Tip;
@@ -20,7 +24,8 @@ import com.example.hygeia.poiutil.ToastUtil;
 import com.example.hygeia.poiutil.Constants;
 
 
-
+import java.io.File;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,14 +90,59 @@ public class InputTipsActivity extends Activity implements SearchView.OnQueryTex
             intent.putExtra(Constants.EXTRA_TIP, tip);
             setResult(MapPoiSearch.RESULT_CODE_INPUTTIPS, intent);
 
-            // TODO 在这里设置搜索结果
+            // TODO 点击poi
             TextView tv_place = (TextView) findViewById(R.id.tv_place);
 //            tv_place.setText(MapPoiSearch.RESULT_CODE_INPUTTIPS);
-
+            Toast.makeText(InputTipsActivity.this,"Your location is "+tip.getName(), Toast.LENGTH_SHORT).show();
+            writeData(tip.getPoint());
             this.finish();
         }
     }
 
+    private void writeData(LatLonPoint startpoint) {
+        String fileName = "startpoint.txt";
+        String writeStr = startpoint.getLatitude() + " " + startpoint.getLongitude();
+        String filePath = null;
+        boolean hasSDCard = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        if (hasSDCard) {
+            filePath = Environment.getExternalStorageDirectory().toString() + File.separator + fileName;
+            Log.e("TestFile", "有SD！！！！");
+        } else {
+            filePath = Environment.getDownloadCacheDirectory().toString() + File.separator + fileName;
+            Log.e("TestFile", "没有SD！！！！");
+        }
+        try {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                File dir = new File(file.getParent());
+                dir.mkdirs();
+                file.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // 写入
+        String strContent = writeStr;
+        try {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                Log.e("TestFile", "Create the file:" + filePath);
+                file.getParentFile().mkdirs();
+                boolean cre = file.createNewFile();
+                if (!cre) {
+                    Log.e("TestFile", "生成文件失败！！！！");
+                };
+            }
+            RandomAccessFile raf = new RandomAccessFile(file, "rwd");
+            raf.seek(file.length());
+            raf.write(strContent.getBytes()); //将字符串写入
+            raf.close();
+            Log.e("TestFile", "写入成功" );
+        } catch (Exception e) {
+            Log.e("TestFile", "Error on write File:" + e);
+        }
+
+    }
     /**
      * 按下确认键触发，本例为键盘回车或搜索键
      *

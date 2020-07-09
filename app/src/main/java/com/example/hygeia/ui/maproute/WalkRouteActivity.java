@@ -64,6 +64,8 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 	private RelativeLayout mBottomLayout, mHeadLayout;
 	private TextView mRotueTimeDes, mRouteDetailDes;
 	private ProgressDialog progDialog = null;// 搜索时进度条
+	private int taskcompletetime = 600;
+	private int alph = 300;
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -91,40 +93,8 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 		}
 		File file = new File(filePath);
 		String filecon = getFileContent(file);
-		Toast.makeText(WalkRouteActivity.this,filecon,Toast.LENGTH_SHORT).show();;
-//		if (!file.isDirectory()) {  //检查此路径名的文件是否是一个目录(文件夹)
-//			if (file.getName().endsWith("txt")) {//文件格式为""文件
-//				try {
-//					System.out.println("--------------------格式为txt----------------------------------：??????????????????????????????");
-//					//InputStream instream = getAssets().open("data.txt");
-//					InputStream instream = new FileInputStream(file);
-//					System.out.println("--------------------格式为txt：??????????????????????????????");
-//					if (instream != null) {
-//						System.out.println("--------------------文件读取：??????????????????????????????");
-//						InputStreamReader inputreader
-//								= new InputStreamReader(instream, "UTF-8");
-//						BufferedReader buffreader = new BufferedReader(inputreader); //输入流
-//						String line = "";
-//						line = buffreader.readLine();
-//						String[] arr = line.split(",");
-//						mStartPoint = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
-//						line = buffreader.readLine();
-//						arr = line.split(",");
-//						mEndPoint = new LatLonPoint(Double.parseDouble(arr[0]),Double.parseDouble(arr[1]));
-//						System.out.println("--------------------文件读取："+arr[0]+arr[1]);
-//						//分行读取
-////						while ((line = buffreader.readLine()) != null) {
-////							content += line + "\n";
-////						}
-//						instream.close();//关闭输入流
-//					}
-//				} catch (java.io.FileNotFoundException e) {
-//					Log.d("TestFile", "The File doesn't not exist.");
-//				} catch (IOException e) {
-//					Log.d("TestFile", e.getMessage());
-//				}
-//			}
-//		}
+		//展示读入的起始点经纬度
+		//Toast.makeText(WalkRouteActivity.this,filecon,Toast.LENGTH_SHORT).show();;
 	}
 	private String getFileContent(File file) {
 		String content = "";
@@ -296,7 +266,9 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 					mBottomLayout.setVisibility(View.VISIBLE);
 					int dis = (int) walkPath.getDistance();
 					int dur = (int) walkPath.getDuration();
-					String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
+					String mistime = getmisstime(dur);
+					String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+") "
+							+"Estimated time: " + mistime;
 					mRotueTimeDes.setText(des);
 					mRouteDetailDes.setVisibility(View.GONE);
 					mBottomLayout.setOnClickListener(new OnClickListener() {
@@ -320,7 +292,22 @@ public class WalkRouteActivity extends Activity implements OnMapClickListener,
 			ToastUtil.showerror(this.getApplicationContext(), errorCode);
 		}
 	}
-	
+
+	private String getmisstime(int dur) {
+		int second = dur;
+		second = 2*second + taskcompletetime + alph;
+		if (second > 3600) {
+			int hour = second / 3600;
+			int miniate = (second % 3600) / 60;
+			return hour + "h" + miniate + "min";
+		}
+		if (second >= 60) {
+			int miniate = second / 60;
+			return miniate + "min";
+		}
+		return second + "s";
+	}
+
 
 	/**
 	 * 显示进度框
